@@ -5,10 +5,8 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  # Core Python Version (Matches our GitHub Actions setup)
+  # Core Python
   - python=3.10
-  
-  # Package Management
   - pip
   - conda
   
@@ -20,33 +18,43 @@ dependencies:
   - matplotlib
   - seaborn
   
-  # Deep Learning Engine (Pulled from PyTorch channel for stability)
+  # Deep Learning Engine
   - pytorch
   - torchvision
   - torchaudio
-  - pytorch-cuda=11.8  # Adjust this if your local NVIDIA drivers require a different CUDA version
+  - pytorch-cuda=11.8  # Adjust to your local NVIDIA drivers
   
-  # Database & Telemetry Drivers
+  # Database Drivers
   - pymongo
   
-  # Research Notebooks
+  # Research & Development
   - jupyterlab
   - ipykernel
+  - pytest
   
-  # Pip-specific packages (for specialized tools not on Conda-forge)
   - pip:
-      # High-Frequency kdb+ Interface
+      # High-Frequency Data Backend
       - pykx
       
-      # Scalable Model Training & Tracking
+      # Quantitative Finance & Derivatives Pricing
+      - QuantLib
+      
+      # Deep Reinforcement Learning Ecosystem
       - pytorch-lightning
+      - gymnasium
+      - torchrl
+      - tensordict
+      - ray[rllib,tune]
+      
+      # MLOps & Tracking
       - mlflow
+      - psycopg2-binary  # Required for MLflow PostgreSQL backend
       
       # Automation & Integration
       - notion-client
       - requests
-      - python-dotenv  # Essential for securely loading NOTION_TOKEN from a local .env file
+      - python-dotenv
       
-      # Live Risk Dashboard
+      # Dashboard & Telemetry
       - streamlit
-      - plotly         # The industry standard for interactive financial charting
+      - plotly      # The industry standard for interactive financial charting

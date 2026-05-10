@@ -87,3 +87,16 @@ research_workspace/obsidian_vault/.trash/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# ------------------------------------------
+# 8. Local Results & Artifacts
+# ------------------------------------------
+# Ignore all generated tear sheets, graphs, and logs
+results/tear_sheets/*.html
+results/tear_sheets/*.pdf
+results/figures/*.png
+results/figures/*.svg
+results/trade_logs/*.csv
+
+# Keep the directory structure intact
+!results/**/.gitkeep
