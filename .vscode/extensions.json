@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-toolsai.jupyter",
+    "kxsystems.kdb",
+    "mongodb.mongodb-vscode",
+    "ms-azuretools.vscode-docker",
+    "redhat.vscode-yaml",
+    "mads-hartmann.bash-ide-vscode",
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+    "github.vscode-github-actions",
+    "eamodio.gitlens"
+  ]
+}
