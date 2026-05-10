@@ -1,0 +1,24 @@
+# config/system.yaml
+
+databases:
+  kdb:
+    host: "127.0.0.1"
+    hdb_port: 5010       # Historical Database Port
+    rdb_port: 5011       # Real-Time Database Port
+    tick_port: 5012      # Ticker Plant Port
+  
+  mongodb:
+    uri: "mongodb://127.0.0.1:27017/"
+    database_name: "axiom_telemetry"
+    collections:
+      - "execution_logs"
+      - "risk_metrics"
+
+mlops:
+  mlflow:
+    tracking_uri: "http://127.0.0.1:5000"
+    registry_name: "Axiom_Production_Models"
+
+logging:
+  level: "INFO"          # Switch to DEBUG during notebook prototyping
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"

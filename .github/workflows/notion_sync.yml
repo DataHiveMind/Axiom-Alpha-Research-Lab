@@ -1,0 +1,42 @@
+name: Notion Kanban Sync
+
+# Trigger the workflow on specific GitHub events
+on:
+  issues:
+    types: [opened, edited, closed, reopened]
+  pull_request:
+    types: [opened, closed, reopened]
+
+jobs:
+  sync_to_notion:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install notion-client requests
+
+      # This step runs a Python script to parse the GitHub event and push it to Notion.
+      # You will need to store NOTION_TOKEN and NOTION_DATABASE_ID in your GitHub Repository Secrets.
+      - name: Execute Notion Sync Script
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          # Passing the entire GitHub event payload as a JSON string to the script
+          GITHUB_EVENT_PATH: ${{ github.event_path }}
+          EVENT_NAME: ${{ github.event_name }}
+          ACTION_TYPE: ${{ github.event.action }}
+          ISSUE_TITLE: ${{ github.event.issue.title || github.event.pull_request.title }}
+          ISSUE_URL: ${{ github.event.issue.html_url || github.event.pull_request.html_url }}
+          ISSUE_AUTHOR: ${{ github.event.sender.login }}
+        run: |
+          python research_workspace/notion_integration/github_to_notion.py

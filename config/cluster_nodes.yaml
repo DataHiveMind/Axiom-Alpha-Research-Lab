@@ -1,0 +1,30 @@
+# config/cluster_nodes.yaml
+
+network:
+  primary_compute:
+    device: "Computer"
+    ip: "192.168.1.100"       # Example local IP
+    role: "drl_training_engine"
+    gpu_enabled: true
+    active_services:
+      - "pytorch_lightning_trainer"
+      - "mlflow_server"
+
+  data_node:
+    device: "Lenovo Laptop"
+    ip: "192.168.1.101"
+    role: "timeseries_database"
+    gpu_enabled: false
+    active_services:
+      - "kdb_hdb"
+      - "kdb_rdb"
+      - "mongodb_telemetry"
+
+  monitoring_station:
+    device: "Chromebook"
+    ip: "192.168.1.102"
+    role: "live_risk_control"
+    gpu_enabled: false
+    active_services:
+      - "pnl_risk_dashboard"
+      - "notion_sprint_management"

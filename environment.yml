@@ -1,0 +1,52 @@
+name: axiom-alpha
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  # Core Python Version (Matches our GitHub Actions setup)
+  - python=3.10
+  
+  # Package Management
+  - pip
+  - conda
+  
+  # Core Quant & Data Science Stack
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  
+  # Deep Learning Engine (Pulled from PyTorch channel for stability)
+  - pytorch
+  - torchvision
+  - torchaudio
+  - pytorch-cuda=11.8  # Adjust this if your local NVIDIA drivers require a different CUDA version
+  
+  # Database & Telemetry Drivers
+  - pymongo
+  
+  # Research Notebooks
+  - jupyterlab
+  - ipykernel
+  
+  # Pip-specific packages (for specialized tools not on Conda-forge)
+  - pip:
+      # High-Frequency kdb+ Interface
+      - pykx
+      
+      # Scalable Model Training & Tracking
+      - pytorch-lightning
+      - mlflow
+      
+      # Automation & Integration
+      - notion-client
+      - requests
+      - python-dotenv  # Essential for securely loading NOTION_TOKEN from a local .env file
+      
+      # Live Risk Dashboard
+      - streamlit
+      - plotly         # The industry standard for interactive financial charting

@@ -1,0 +1,29 @@
+# config/agent_params.yaml
+
+causal_discovery:
+  significance_level: 0.05
+  max_lag_periods: 5
+  deconfounder_penalty: 0.1
+
+drl_engine:
+  # Upper Agent (Portfolio Allocation & Causal Alpha)
+  portfolio_agent:
+    algorithm: "SAC"            # Soft Actor-Critic for continuous action spaces
+    learning_rate: 0.0003
+    discount_factor_gamma: 0.99
+    batch_size: 256
+    buffer_size: 1000000
+    target_entropy: "auto"
+
+  # Lower Agent (Execution & Optimal Hedging)
+  execution_agent:
+    algorithm: "PPO"            # Proximal Policy Optimization
+    learning_rate: 0.0001
+    clip_ratio: 0.2
+    value_coefficient: 0.5
+    entropy_coefficient: 0.01
+
+validation:
+  cpcv:
+    number_of_paths: 10
+    purge_embargo_fraction: 0.01 # Prevents look-ahead bias in financial timeseries

@@ -1,0 +1,89 @@
+# ==========================================
+# Axiom Alpha: Master Git Ignore
+# ==========================================
+
+# ------------------------------------------
+# 1. Environment Variables & Secrets
+# ------------------------------------------
+# NEVER commit your Notion tokens, DB passwords, or broker API keys.
+.env
+.env.local
+.env.*
+*.pem
+*.key
+
+# ------------------------------------------
+# 2. Python & Conda Environments
+# ------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+conda-env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# ------------------------------------------
+# 3. Data & Databases (kdb+ & MongoDB)
+# ------------------------------------------
+# Ignore all heavy market data, but keep the directory structure intact
+data/raw/*
+data/processed/*
+data/external/*
+data/hdb/*
+data/sym/*
+!data/**/.gitkeep
+
+# Ignore kdb+ transaction logs and crash reports
+*.log
+tplog_*
+*.err
+
+# ------------------------------------------
+# 4. Machine Learning & PyTorch Checkpoints
+# ------------------------------------------
+# Ignore saved model weights (these should be in MLflow or cloud storage)
+*.pt
+*.pth
+*.ckpt
+lightning_logs/
+
+# Ignore local MLflow artifact directories and SQLite databases (if used locally)
+mlruns/
+mlflow.db
+*.sqlite
+
+# ------------------------------------------
+# 5. Research Workspaces (Jupyter & NotebookLM)
+# ------------------------------------------
+# Jupyter state files
+.ipynb_checkpoints/
+*.ipynb_checkpoints/
+
+# Ignore raw downloaded PDFs to save repository space
+research_workspace/notebooklm_staging/01_raw_papers/*.pdf
+
+# ------------------------------------------
+# 6. Obsidian Vault Configurations
+# ------------------------------------------
+# Ignore local workspace states (keeps your open tabs from syncing to other machines)
+research_workspace/obsidian_vault/.obsidian/workspace.json
+research_workspace/obsidian_vault/.obsidian/workspace-mobile.json
+research_workspace/obsidian_vault/.obsidian/core-plugins.json
+research_workspace/obsidian_vault/.obsidian/graph.json
+research_workspace/obsidian_vault/.trash/
+
+# ------------------------------------------
+# 7. OS Generated Files
+# ------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
