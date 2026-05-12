@@ -1,0 +1,13 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip=23.2.1
+  - robocorp-browser=2.2.1
+  - robocorp-tasks=2.6.0
+  - pandas
+  - requests
+  - beautifulsoup4
+  - pip:
+    - pykx  # Crucial: allows the bot to push directly to kdb+
+    - vaderSentiment # For lightweight NLP on Central Bank PDFs
